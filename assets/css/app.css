@@ -127,7 +127,42 @@ nav ul li {
 
 .main { }
 
+.container {
+	position:relative;
+	width: 1024px;
+	margin: auto;
+	margin-bottom: 120px;
+	padding: 40px 0 0 0;
+	}
 
+.column {
+	position:relative;
+	float: left;
+	width: 300px;
+	padding: 0px 10px 10px 10px;
+	}
+	
+.2columns {
+	position:relative;
+	float: right;
+	width: 600px;
+	background-color: #0C9;
+	}
+
+h1 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+	line-height:35px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 40px 40px 5px 0;
+	}
+
+.keyvisual {
+	background: url(dots.png) repeat-x;
+	width: 290px;
+	}
 
 /* ==========================================================================
    Sidebar
