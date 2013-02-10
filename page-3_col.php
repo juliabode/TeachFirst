@@ -14,7 +14,6 @@ Template Name: 3 Spalten
   <?php the_field('3-col-text_col2'); ?>
 </div>
 
-</div>
 <div class="column3">
   <?php the_field('3-col-text_col3'); ?>
 </div>

@@ -204,7 +204,34 @@ h1 {
 
 .content-info { }
 
+footer {
+	height: 370px;
+	width: 100%;
+	background-color: rgb(50,50,50);
+	margin-top: 80px;
+	font-size: 12px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: #fff;
+	list-style:none;
+	}
 
+footer div {
+	padding: 30px;
+	}
+	
+footer ul {
+	list-style:none;
+	}
+	
+navTopFooter {
+	float: right;
+	}
+
+.keyvisual_w {
+	background: url(dots_w.png) repeat-x;
+	width: 100%;
+	}
 
 /* ==========================================================================
    WordPress Generated Classes
