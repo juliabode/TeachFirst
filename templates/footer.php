@@ -1,10 +1,10 @@
 <footer class="content-info" role="contentinfo">
-  <div class="container">
+  <div>
     <ul>
       <li>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></li>
       <li><a href="<?php $options = get_option('plugin_options'); echo $options['tf_imprint_link'];?>">Impressum</a></li>
     </ul>
-  </div>
+  
   <nav class="navTopFooter" role="navigation">
     <?php
       if (has_nav_menu('top_slider_navigation')) :
@@ -12,6 +12,7 @@
       endif;
     ?>
   </nav>
+  </div>
   <nav class="navMainFooter" role="navigation">
     <?php
       if (has_nav_menu('bottom_slider_navigation')) :
