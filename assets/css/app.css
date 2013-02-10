@@ -231,11 +231,11 @@ footer .copyright {
 footer .nav-pills {
 	float: right;
 	width: 400px;
-	
+	display: block;
 	}
 
 .keyvisual_w {
-	background: url(..img/dots_w.png) repeat-x;
+	background: url(../img/dots_w.png) repeat-x;
 	width: 100%;
 	}
 	
