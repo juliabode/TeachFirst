@@ -210,3 +210,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
     padding-top: 0;
   }
 }
+
+
+.responsive-slider.flexslider { margin-bottom: 0; }
