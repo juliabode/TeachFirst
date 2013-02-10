@@ -27,6 +27,10 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
 ::-moz-selection { background: rgb(168,180,0); color: #fff; text-shadow: none; }
 ::selection { background: rgb(168,180,0); color: #fff; text-shadow: none; }
 
+.clearfix {
+	clear: both;
+	}
+
 /* =============================================================================
    Header
    ========================================================================== */
@@ -140,8 +144,22 @@ nav ul li {
 .column2 {
 	position:relative;
 	float: left;
-	width: 620px;
+	width: 300px;
 	margin: 0px 10px 10px 10px;
+	}
+	
+.column3 {
+	position:relative;
+	float: left;
+	width: 300px;
+	margin: 0px 10px 10px 10px;
+	}
+
+.columnWide {
+	position:relative;
+	float: left;
+	width: 620px;
+	margin: 15px 10px 10px 10px;
 	}
 	
 h1 {
@@ -155,8 +173,9 @@ h1 {
 	}
 
 .keyvisual {
-	background: url(.../img/dots.png) repeat-x;
+	background: url(../img/dots.png) repeat-x;
 	width: 290px;
+	height:25px;
 	}
 
 /* ==========================================================================
