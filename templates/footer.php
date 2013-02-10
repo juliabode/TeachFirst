@@ -1,6 +1,6 @@
 <footer class="content-info" role="contentinfo">
   <div>
-    <ul>
+    <ul class="copyright">
       <li>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></li>
       <li><a href="<?php $options = get_option('plugin_options'); echo $options['tf_imprint_link'];?>">Impressum</a></li>
     </ul>
@@ -20,6 +20,7 @@
       endif;
     ?>
   </nav>
+  
   <?php dynamic_sidebar('sidebar-footer'); ?>
 </footer>
 

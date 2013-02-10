@@ -138,39 +138,40 @@ nav ul li {
 	position:relative;
 	float: left;
 	width: 300px;
-	margin: 0px 10px 10px 10px;
+	margin: 15px 10px 10px 20px;
 	}
 	
 .column2 {
 	position:relative;
 	float: left;
 	width: 300px;
-	margin: 0px 10px 10px 10px;
+	margin: 30px 10px 10px 10px;
 	}
 	
 .column3 {
 	position:relative;
 	float: left;
 	width: 300px;
-	margin: 0px 10px 10px 10px;
+	margin: 30px 10px 10px 10px;
 	}
 
 .columnWide {
 	position:relative;
 	float: left;
 	width: 620px;
-	margin: 15px 10px 10px 10px;
+	margin: 30px 10px 10px 10px;
 	}
 	
 h1 {
 	font-family: 'Roboto', sans-serif;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 30px;
 	line-height:35px;
 	text-transform: uppercase;
-	letter-spacing: 1px;
-	padding: 40px 40px 5px 0;
+	letter-spacing: 0px;
+	padding: 10px 40px 5px 0;
 	}
+
 
 .keyvisual {
 	background: url(../img/dots.png) repeat-x;
@@ -224,13 +225,33 @@ footer ul {
 	list-style:none;
 	}
 	
-navTopFooter {
+footer .copyright {
+	width: 400px;
+	}
+	
+footer .nav-pills {
 	float: right;
+	width: 400px;
+	
 	}
 
 .keyvisual_w {
-	background: url(dots_w.png) repeat-x;
+	background: url(..img/dots_w.png) repeat-x;
 	width: 100%;
+	}
+	
+navMainFooter {
+	
+	}
+	
+.dropdown-menu {
+	display: block;
+	float: left;
+	}
+
+footer section {
+	float: right;
+	
 	}
 
 /* ==========================================================================
