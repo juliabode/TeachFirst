@@ -11,6 +11,11 @@ Template Name: 3 Spalten
 	
 </div>
 <div class="column2">
-  <?php the_field('2-col-text-video_video'); ?>
+  <?php the_field('3-col-text_col2'); ?>
+</div>
+
+</div>
+<div class="column3">
+  <?php the_field('3-col-text_col3'); ?>
 </div>
 <br class="clearfix">
