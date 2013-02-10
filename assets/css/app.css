@@ -14,7 +14,7 @@ body { background: url("../img/background.png");
 }
 
 .container {
-  width: 1024px;
+  width: 1000px;
   background: white;
   margin: 0 auto;
 }
@@ -129,8 +129,6 @@ nav ul li {
 
 .container {
 	position:relative;
-	width: 1024px;
-	margin: auto;
 	margin-bottom: 120px;
 	padding: 40px 0 0 0;
 	}
