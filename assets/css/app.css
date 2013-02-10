@@ -51,7 +51,7 @@ nav ul li {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	text-align: right;
-	padding: 1px 40px 5px 0;
+	padding: 1px 0 5px 0;
 	}
 	
 .navMain ul {
@@ -59,7 +59,7 @@ nav ul li {
 	}
 	
 .navMain ul li {
-	padding: 0px 40px 0 0;
+	padding: 0 40px 0 0;
 	}		
 	
 .navMain {
@@ -71,7 +71,7 @@ nav ul li {
 	font-size: 18px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	padding: 1px 40px 5px 0;
+	padding: 1px 0px 5px 0;
 	}
 	
 .navMain ul a {
@@ -87,7 +87,7 @@ nav ul li {
 	border: solid 2px #fff;
 	margin: 0 0px 0 -45px;
 	height: 28px;
-	padding-top: 5px;	
+	padding: 5px 0 0 0;	
 	background-color: rgb(168,180,0);
 	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
@@ -97,9 +97,14 @@ nav ul li {
 	overflow: hidden;
 	z-index:3;
 	}
+	
+.navMain ul li {
+	padding: 0 0 0 5px;
+	}		
 
 .navMain ul li ul a {
 	border: solid 8px rgb(168,180,0);
+	padding: 0;	
 	}
 
 .navMain ul li:hover ul {
@@ -125,26 +130,20 @@ nav ul li {
 
 .main { }
 
-.container {
-	position:relative;
-	margin-bottom: 120px;
-	padding: 40px 0 0 0;
-	}
-
-.column {
+.column1 {
 	position:relative;
 	float: left;
 	width: 300px;
-	padding: 0px 10px 10px 10px;
+	margin: 0px 10px 10px 10px;
 	}
 	
-.2columns {
+.column2 {
 	position:relative;
-	float: right;
-	width: 600px;
-	background-color: #0C9;
+	float: left;
+	width: 620px;
+	margin: 0px 10px 10px 10px;
 	}
-
+	
 h1 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
@@ -156,7 +155,7 @@ h1 {
 	}
 
 .keyvisual {
-	background: url(dots.png) repeat-x;
+	background: url(.../img/dots.png) repeat-x;
 	width: 290px;
 	}
 
