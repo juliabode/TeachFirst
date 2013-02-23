@@ -153,35 +153,32 @@ ul {
    Primary Content
    ========================================================================== */
 
-.main { }
+.main { padding-top: 50px; }
 
 .column1 {
-	position:relative;
 	float: left;
-	width: 300px;
-	margin: 15px 10px 10px 20px;
-	}
+  width: 400px;
+  margin-right: 34px;
+}
 	
 .column2 {
 	position:relative;
 	float: left;
 	width: 300px;
 	margin: 30px 10px 10px 10px;
-	}
+}
 	
 .column3 {
 	position:relative;
 	float: left;
 	width: 300px;
 	margin: 30px 10px 10px 10px;
-	}
+}
 
 .columnWide {
-	position:relative;
-	float: left;
-	width: 620px;
-	margin: 30px 10px 10px 10px;
-	}
+	float: right;
+	width: 560px;
+}
 	
 h1 {
 	font-family: 'Roboto', sans-serif;
@@ -190,15 +187,14 @@ h1 {
 	line-height:35px;
 	text-transform: uppercase;
 	letter-spacing: 0px;
-	padding: 10px 40px 5px 0;
-	}
+  margin-top: 0;
+}
 
 
 .keyvisual {
 	background: url(../img/dots.png) repeat-x;
-	width: 290px;
 	height:25px;
-	}
+}
 
 /* ==========================================================================
    Sidebar
