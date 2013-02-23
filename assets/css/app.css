@@ -2,7 +2,7 @@
    Base
    ========================================================================== */
 
-body { background: url("../img/background.png"); 
+body {
 	background-color: #fff;  
  	font-family: Georgia serif;
 	font-weight: 400;
@@ -14,8 +14,7 @@ body { background: url("../img/background.png");
 }
 
 .container {
-  width: 1000px;
-  background: white;
+  width: 1024px;
   margin: 0 auto;
 }
 
@@ -35,7 +34,37 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
    Header
    ========================================================================== */
 
-.banner { }
+.slider { position: relative; }
+
+.logo {
+  position:absolute;
+  z-index:5;
+  left: 20px;
+  top: 20px;
+}
+
+.apply-now {
+  position:absolute;
+  z-index:5;
+  left: 0;
+  bottom: 40px;
+}
+
+.slides img {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.responsive-slider.flexslider {
+  margin-bottom: 0;
+  height: 400px;
+  overflow: hidden;
+}
 
 nav ul li {
 	position: relative;
@@ -271,7 +300,3 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
   body.top-navbar {
     padding-top: 0;
   }
-}
-
-
-.responsive-slider.flexslider { margin-bottom: 0; }
