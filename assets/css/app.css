@@ -34,7 +34,10 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
    Header
    ========================================================================== */
 
-.slider { position: relative; }
+.slider {
+ position: relative;
+ min-width: 1024px;
+}
 
 .logo {
   position:absolute;
@@ -59,6 +62,8 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
   top: 0;
   left: 0;
 }
+
+.slides h2 { display: none; }
 
 .responsive-slider.flexslider {
   margin-bottom: 0;
@@ -300,3 +305,12 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
   body.top-navbar {
     padding-top: 0;
   }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .responsive-slider.flexslider .slides img {
+    left: 50%;
+    margin: 0 0 0 -512px;
+  }
+}
