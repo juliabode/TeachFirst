@@ -28,7 +28,12 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
 
 .clearfix {
 	clear: both;
-	}
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
 
 /* =============================================================================
    Header
@@ -70,88 +75,70 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
   height: 400px;
   overflow: hidden;
 }
-
-nav ul li {
-	position: relative;
-	list-style: none;
-	display: inline;
-	color: #FFF;
-	}	
-
-.navTop ul li {
-	padding: 0px 20px 5px 0;
-	}	
-
-.navTop {
-	height: 30px;
-	background-color: rgb(50,50,50);
-	font-size: 12px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	text-align: right;
-	padding: 1px 0 5px 0;
-	}
-	
-.navMain ul {
-	position: relative;
-	}
-	
-.navMain ul li {
-	padding: 0 40px 0 0;
-	}		
 	
 .navMain {
-	postion: relative;;
-	height: 46px;
+	position: relative;
 	background-color: rgb(50,50,50);
 	font-family: 'Roboto', sans-serif;
-	font-weight: 400;
+  border-bottom: 35px solid rgb(168,180,0);
+}
+
+.main-navigation {
+  height: 52px;
+  position: relative;
+}
+
+.main-navigation li.dropdown {
+  padding: 0 40px 0 0;
+}
+
+.main-navigation li.dropdown > a {
+  line-height: 52px;
 	font-size: 18px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	padding: 1px 0px 5px 0;
-	}
-	
-.navMain ul a {
-	border: solid 12px rgb(50,50,50);
 }
-	
-.navMain ul li ul {
+
+.white-nav-border { border-bottom: 3px solid #fff }
+
+.navMain li, .navTop li {
+  float: left;
+	list-style: none;
+	color: #FFF;
+}
+
+.navMain ul.dropdown-menu {
 	position: absolute;
 	display: none;
-	width:1000px;
-	top:35px;
-	left:0;
-	border: solid 2px #fff;
-	margin: 0 0px 0 -45px;
-	height: 28px;
-	padding: 5px 0 0 0;	
-	background-color: rgb(168,180,0);
+	left: 0;
 	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	letter-spacing: 0px;
-	text-transform: none;
-	overflow: hidden;
-	z-index:3;
-	}
-	
-.navMain ul li {
-	padding: 0 0 0 5px;
-	}		
+	z-index: 3;
+  width: 1024px;
+  line-height: 40px;
+}
 
-.navMain ul li ul a {
-	border: solid 8px rgb(168,180,0);
-	padding: 0;	
-	}
+.navMain ul.dropdown-menu li { padding-right: 25px; }
 
-.navMain ul li:hover ul {
-	display: inline;
-	}
+.navTop li {
+	padding-left: 20px;
+}	
 
-.navMain ul li ul li a:hover {
+.navTop {
+	height: 36px;
+	background-color: rgb(50,50,50);
+	font-size: 12px;
+	font-family: 'Roboto', sans-serif;
+  line-height: 36px;
+}
+
+.navMain li.dropdown:hover ul {
+	display: block;
+}
+
+.navMain ul.dropdown-menu a:hover {
 	color: rgb(50,50,50);
-	}
+}
 
 
 /* ==========================================================================
@@ -240,9 +227,9 @@ h1 {
 .content-info { }
 
 footer {
+	background: url('../img/background.png');
 	height: 370px;
 	width: 100%;
-	background-color: rgb(50,50,50);
 	margin-top: 80px;
 	font-size: 12px;
 	font-family: 'Roboto', sans-serif;

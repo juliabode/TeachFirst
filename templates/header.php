@@ -3,7 +3,7 @@
     <div class="container">
       <?php
         if (has_nav_menu('top_slider_navigation')) :
-          wp_nav_menu(array('theme_location' => 'top_slider_navigation', 'menu_class' => 'nav nav-pills'));
+          wp_nav_menu(array('theme_location' => 'top_slider_navigation', 'menu_class' => 'alignright nav nav-pills'));
         endif;
       ?>
     </div>
@@ -14,12 +14,14 @@
     <?php echo do_shortcode( '[responsive_slider]' ); ?>
   </div>
   <nav class="navMain" role="navigation">
-    <div class="container">
-      <?php
-        if (has_nav_menu('bottom_slider_navigation')) :
-          wp_nav_menu(array('theme_location' => 'bottom_slider_navigation', 'menu_class' => 'nav nav-pills'));
-        endif;
-      ?>
+    <div class="white-nav-border">
+      <div class="container">
+        <?php
+          if (has_nav_menu('bottom_slider_navigation')) :
+            wp_nav_menu(array('theme_location' => 'bottom_slider_navigation', 'menu_class' => 'main-navigation nav nav-pills'));
+          endif;
+        ?>
+      </div>
     </div>
   </nav>
 </header>
