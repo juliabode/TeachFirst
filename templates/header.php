@@ -8,11 +8,19 @@
       ?>
     </div>
   </nav>
+
   <div class="slider">
     <a href="<?php echo home_url(); ?>"><img class="logo" style="" src="<?php echo get_bloginfo("template_url");?>/assets/img/TFD-logo-weiss.png" /></a>
-    <a href="https://bewerbung.teachfirst.de/"><img class="apply-now" src="<?php echo get_bloginfo("template_url");?>/assets/img/stoerer.png" />
-    <?php echo do_shortcode( '[responsive_slider]' ); ?>
+    <a href="https://bewerbung.teachfirst.de/"><img class="apply-now" src="<?php echo get_bloginfo("template_url");?>/assets/img/stoerer.png" /></a>
+    <?php global $wp_query;
+          $page_parent_image = get_field('header_image', $wp_query->post->post_parent);
+      if ( $page_parent_image ) {
+        echo wp_get_attachment_image( $page_parent_image, 'full' );
+      } else {
+        echo do_shortcode( '[responsive_slider]' );
+      } ?>
   </div>
+
   <nav class="navMain" role="navigation">
     <div class="white-nav-border">
       <div class="container">
