@@ -1,17 +1,24 @@
 <?php
 
+function admin_register_head() {  
+  $url = get_bloginfo('template_directory') . '/assets/css/options_page.css';
+  echo "<link rel='stylesheet' href='$url' />\n";
+}
+add_action('admin_head', 'admin_register_head');
+
 function create_theme_options_page() {
   add_dashboard_page('Zusätzliche Einstellungen', 'Theme Options', 'administrator', __FILE__, 'build_options_page');
 }
 add_action('admin_menu', 'create_theme_options_page');
 
 function build_options_page() { ?>
-  <div id="theme-options-wrap">
-    <div class="icon32" id="icon-tools"><br /></div>
+  <div id="theme-options-wrap" class="widefat wrap">
+    <div class="icon32" id="icon-options-general"><br /></div>
     <h2>Zusätzliche Einstellungen</h2>
+    <?php settings_errors(); ?>
 
     <form method="post" action="options.php" enctype="multipart/form-data">
-      <?php settings_fields('plugin_options'); ?>
+      <?php settings_fields('theme_options'); ?>
       <?php do_settings_sections(__FILE__); ?>
       <p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
     </form>

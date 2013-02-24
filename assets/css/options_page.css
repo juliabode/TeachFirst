@@ -1,0 +1,31 @@
+.form-table input, .form-table textarea {
+  width: 100%;
+}
+#theme-options-wrap {
+  width: 90%;
+  padding: 3em;
+  background: white;
+  background: -moz-linear-gradient(top, #f4f2f2, white 20%, #f4f2f2 80%, white);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f4f2f2), color-stop(.2, white), color-stop(.8, #f4f2f2), to(white));
+}
+
+#theme-options-wrap #icon-tools {
+  position: relative;
+  top: -10px;
+}
+
+#theme-options-wrap input, #theme-options-wrap textarea {
+  padding: .7em;
+}
+
+#theme-options-wrap .button-primary {
+  height: auto;
+}
+
+#theme-options-wrap.widefat td, #theme-options-wrap.widefat th {
+  border: none;
+}
+
+#theme-options-wrap.widefat tbody {
+  border-bottom: 1px solid #dfdfdf;
+}
