@@ -27,7 +27,7 @@ a:hover {text-decoration: none; color: rgb(168,180,0);}
 ::selection { background: rgb(168,180,0); color: #fff; text-shadow: none; }
 
 .clearfix {
-	clear: both;
+	overflow: hidden;
 }
 
 ul {
@@ -39,7 +39,7 @@ ul {
    Header
    ========================================================================== */
 
-.slider {
+.slider, .slides {
   position: relative;
   min-width: 1024px;
   margin-bottom: 0;
@@ -157,20 +157,12 @@ ul {
   width: 400px;
   margin-right: 34px;
 }
-	
-.column2 {
-	position:relative;
-	float: left;
-	width: 300px;
-	margin: 30px 10px 10px 10px;
+
+.span3 {
+  width: 320px;
+  margin-right: 32px;
 }
-	
-.column3 {
-	position:relative;
-	float: left;
-	width: 300px;
-	margin: 30px 10px 10px 10px;
-}
+.span3:last-child { margin-right: 0; }
 
 .columnWide {
 	float: right;

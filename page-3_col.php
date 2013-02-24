@@ -4,17 +4,18 @@ Template Name: 3 Spalten
 */
 ?>
 
-<div class="column1">
-	<?php get_template_part('templates/page', 'header'); ?>
-	<div class="keyvisual"></div>
-  <?php get_template_part('templates/content', 'page'); ?>
-	
-</div>
-<div class="column2">
-  <?php the_field('3-col-text_col2'); ?>
-</div>
+<?php get_template_part('templates/page', 'header'); ?>
 
-<div class="column3">
-  <?php the_field('3-col-text_col3'); ?>
+<div class="clearfix">
+  <div class="span3 alignleft">
+    <?php get_template_part('templates/content', 'page'); ?>
+  </div>
+
+  <div class="span3 alignleft">
+    <?php the_field('3-col-text_col2'); ?>
+  </div>
+
+  <div class="span3 alignleft">
+    <?php the_field('3-col-text_col3'); ?>
+  </div>
 </div>
-<br class="clearfix">
