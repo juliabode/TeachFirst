@@ -6,8 +6,8 @@ body {
 	background-color: #fff;  
  	font-family: Georgia serif;
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 140%;
+	font-size: 16px;
+	line-height: 160%;
 	color: rgb(60,60,60);
 	margin: 0;
 	padding: 0;
@@ -158,11 +158,9 @@ ul {
   margin-right: 34px;
 }
 
-.span3 {
-  width: 320px;
-  margin-right: 32px;
-}
-.span3:last-child { margin-right: 0; }
+.span4 { width: 320px; margin-right: 32px; }
+.span6 { width: 485px; margin-right: 34px }
+.span4:last-child, .span6:last-child { margin-right: 0; }
 
 .columnWide {
 	float: right;
@@ -216,11 +214,6 @@ h1 {
 
 .acc-content {
   padding: 5px 0px 30px 0px;
-}
-.acc-content p {
-  font-size: 16px;
-  line-height: 28px;
-  padding: 0px 4px 15px 4px; 
 }
 
 .accordion h2 a span {
