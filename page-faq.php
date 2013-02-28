@@ -8,7 +8,7 @@ Template Name: FAQ
 
 <div class="clearfix">
   <div class="accordion vertical" id="accordion">
-    <?php query_posts( 'post_type=tf_faq&orderby=menu_order' ); ?>
+    <?php query_posts( 'post_type=tf_faq&orderby=menu_order&posts_per_page=-1' ); ?>
 
     <?php if (have_posts()) : ?>
       <?php get_template_part('templates/content-faq', get_post_format()); ?>
