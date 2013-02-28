@@ -1,4 +1,4 @@
-<footer class="content-info" role="contentinfo">
+<footer class="content-info clearfix" role="contentinfo">
   <div class="container">
     <div>
       <ul class="copyright">

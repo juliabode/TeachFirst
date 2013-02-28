@@ -45,20 +45,20 @@ jQuery.extend( jQuery.easing,
 	$.fn.smartresize 			= function( fn ) {
 		return fn ? this.bind( "smartresize", fn ) : this.trigger( "smartresize", ["execAsap"] );
 	};
-	
+
 	$.Accordion 				= function( options, element ) {
-	
+
 		this.$el			= $( element );
 		// list items
 		this.$items			= this.$el.children('ul').children('li');
 		// total number of items
 		this.itemsCount		= this.$items.length;
-		
+
 		// initialize accordion
 		this._init( options );
-		
+
 	};
-	
+
 	$.Accordion.defaults 		= {
 		// index of opened item. -1 means all are closed by default.
 		open			: -1,
@@ -73,10 +73,10 @@ jQuery.extend( jQuery.easing,
 		// easing of the scroll to action animation
 		scrollEasing	: 'easeInOutExpo'
     };
-	
+
 	$.Accordion.prototype 		= {
 		_init 				: function( options ) {
-			
+
 			this.options 		= $.extend( true, {}, $.Accordion.defaults, options );
 
 			// validate options
@@ -88,7 +88,7 @@ jQuery.extend( jQuery.easing,
 			// hide the contents so we can fade it in afterwards
 			this.$items.find('div.acc-content').hide();
 
-			// save original height and top of each item	
+			// save original height and top of each item
 			this._saveDimValues();
 
 			// if we want a default opened item...
@@ -97,160 +97,160 @@ jQuery.extend( jQuery.easing,
 
 			// initialize the events
 			this._initEvents();
-			
+
 		},
 		_saveDimValues		: function() {
-		
+
 			this.$items.each( function() {
-				
+
 				var $item		= $(this);
-				
+
 				$item.data({
 					originalHeight 	: $item.find('a:first').height(),
 					offsetTop		: $item.offset().top - 40
 				});
-				
+
 			});
-			
+
 		},
 		// validate options
 		_validate			: function() {
-		
+
 			// open must be between -1 and total number of items, otherwise we set it to -1
 			if( this.options.open < -1 || this.options.open > this.itemsCount - 1 )
 				this.options.open = -1;
-	 	
+
 		},
 		_initEvents			: function() {
-			
+
 			var instance	= this;
-			
+
 			// open / close item
 			this.$items.find('a:first').bind('click.accordion', function( event ) {
-				
+
 				var $item			= $(this).parents('li');
-				
+
 				// close any opened item if oneOpenedItem is true
 				if( instance.options.oneOpenedItem && instance._isOpened() && instance.current!== $item.index() ) {
-					
+
 					instance._toggleItem( instance.$items.eq( instance.current ) );
-				
+
 				}
-				
+
 				// open / close item
 				instance._toggleItem( $item );
-				
+
 				return false;
-			
+
 			});
-			
+
 			$(window).bind('smartresize.accordion', function( event ) {
-				
+
 				// reset orinal item values
 				instance._saveDimValues();
-			
+
 				// reset the content's height of any item that is currently opened
 				instance.$el.find('li.acc-open').each( function() {
-					
+
 					var $this	= $(this);
 					$this.css( 'height', $this.data( 'originalHeight' ) + $this.find('div.acc-content').outerHeight( true ) );
-				
+
 				});
-				
+
 				// scroll to current
 				if( instance._isOpened() )
 				instance._scroll();
-				
+
 			});
-			
+
 		},
 		// checks if there is any opened item
 		_isOpened			: function() {
-		
+
 			return ( this.$el.find('li.acc-open').length > 0 );
-		
+
 		},
 		// open / close item
 		_toggleItem			: function( $item ) {
-			
+
 			var $content = $item.find('div.acc-content');
-			
-			( $item.hasClass( 'acc-open' ) ) 
-					
+
+			( $item.hasClass( 'acc-open' ) )
+
 				? ( this.current = -1, $content.stop(true, true).fadeOut( this.options.speed ), $item.removeClass( 'acc-open' ).stop().animate({
 					height	: $item.data( 'originalHeight' )
 				}, this.options.speed, this.options.easing ) )
-				
+
 				: ( this.current = $item.index(), $content.stop(true, true).fadeIn( this.options.speed ), $item.addClass( 'acc-open' ).stop().animate({
 					height	: $item.data( 'originalHeight' ) + $content.outerHeight( true )
 				}, this.options.speed, this.options.easing ), this._scroll( this ) )
-		
+
 		},
 		// scrolls to current item or last opened item if current is -1
 		_scroll				: function( instance ) {
-			
+
 			var instance	= instance || this, current;
-			
+
 			( instance.current !== -1 ) ? current = instance.current : current = instance.$el.find('li.acc-open:last').index();
-			
+
 			$('html, body').stop().animate({
 				scrollTop	: ( instance.options.oneOpenedItem ) ? instance.$items.eq( current ).data( 'offsetTop' ) : instance.$items.eq( current ).offset().top
 			}, instance.options.scrollSpeed, instance.options.scrollEasing );
-		
+
 		}
 	};
-	
+
 	var logError 				= function( message ) {
-		
+
 		if ( this.console ) {
-			
+
 			console.error( message );
-			
+
 		}
-		
+
 	};
-	
+
 	$.fn.accordion 				= function( options ) {
-	
+
 		if ( typeof options === 'string' ) {
-		
+
 			var args = Array.prototype.slice.call( arguments, 1 );
 
 			this.each(function() {
-			
+
 				var instance = $.data( this, 'accordion' );
-				
+
 				if ( !instance ) {
 					logError( "cannot call methods on accordion prior to initialization; " +
 					"attempted to call method '" + options + "'" );
 					return;
 				}
-				
+
 				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
 					logError( "no such method '" + options + "' for accordion instance" );
 					return;
 				}
-				
+
 				instance[ options ].apply( instance, args );
-			
+
 			});
-		
-		} 
+
+		}
 		else {
-		
+
 			this.each(function() {
 				var instance = $.data( this, 'accordion' );
 				if ( !instance ) {
 					$.data( this, 'accordion', new $.Accordion( options, this ) );
 				}
 			});
-		
+
 		}
-		
+
 		return this;
-		
+
 	};
-	
+
 })( window, jQuery );
 
 
@@ -259,72 +259,72 @@ jQuery.extend( jQuery.easing,
 (function($) {
 
     $.organicTabs = function(el, options) {
-    
+
         var base = this;
         base.$el = $(el);
         base.$nav = base.$el.find(".tab-nav");
 
         base.init = function() {
-        
+
             base.options = $.extend({},$.organicTabs.defaultOptions, options);
-            
+
             base.$nav.delegate("a.tab-header", "click", function() {
-            
+
                 // Figure out current list via CSS class
                 var curList = base.$el.find("a.current").attr("href").substring(1),
-                
+
                 // List moving to
                     $newList = $(this),
-                    
+
                 // Figure out ID of new list
                     listID = $newList.attr("href").substring(1),
-                
+
                 // Set outer wrapper height to (static) height of current inner list
                     $allListWrap = base.$el.find(".tab-content-wrap"),
                     curListHeight = $allListWrap.height();
                 $allListWrap.height(curListHeight);
-                                        
+
                 if ((listID != curList) && ( base.$el.find(":animated").length == 0)) {
-                                            
+
                     // Fade out current list
                     base.$el.find("#"+curList).fadeOut(base.options.speed, function() {
-                        
+
                         // Fade in new list on callback
                         base.$el.find("#"+listID).fadeIn(base.options.speed);
-                        
+
                         // Adjust outer wrapper to fit new list snuggly
                         var newHeight = base.$el.find("#"+listID).height() + 24;
                         $allListWrap.animate({
                             height: newHeight
-                        });
-                        
+                            });
+
                         // Remove highlighting - Add to just-clicked tab
                         base.$el.find(".tab-nav a").removeClass("current");
                         $newList.addClass("current");
-                            
+
                     });
-                    
-                }   
-                
+
+                }
+
                 // Don't behave like a regular link
                 // Stop propegation and bubbling
                 return false;
             });
-            
+
         };
         base.init();
     };
-    
+
     $.organicTabs.defaultOptions = {
         "speed": 300
     };
-    
+
     $.fn.organicTabs = function(options) {
         return this.each(function() {
             (new $.organicTabs(this, options));
         });
     };
-    
+
 })(jQuery);
 
 jQuery(function() {
