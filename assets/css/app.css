@@ -337,12 +337,16 @@ h1 {
    Posts
    ========================================================================== */
 
-.hentry header { }
-.hentry time { }
-.hentry .byline { }
-.hentry .entry-content { }
-.hentry footer { }
+.hentry .entry-content { padding: 5px 0; }
 
+.hentry .entry-content img {
+padding: 4px;
+border: 1px solid #dfdfdf;
+border-radius: 4px;
+box-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+.hentry .entry-content img.alignleft { margin-right: 20px; }
+.hentry .entry-content img.alignright { margin-left: 20px; }
 
 
 /* ==========================================================================
