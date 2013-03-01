@@ -349,52 +349,46 @@ h1 {
    Footer
    ========================================================================== */
 
-.content-info { }
-
-footer {
+.content-info {
 	background: url('../img/background.png');
-	height: 370px;
-	width: 100%;
+	padding: 40px 0;
 	margin-top: 80px;
 	font-size: 12px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	color: #fff;
-	}
+}
+.content-info .container > div { margin-bottom: 30px; }
 
-footer div {
-	padding: 30px;
-	}
-	
-footer ul {
-	list-style:none;
-	}
-	
-footer .copyright {
-	width: 400px;
-	}
-	
-footer .nav-pills {
-	float: right;
-	width: 400px;
-	display: block;
-	}
+.content-info ul {
+	list-style: none;
+}
 
-.keyvisual_w {
-	background: url(../img/dots_w.png) repeat-x;
-	width: 100%;
-	}
-	
-	
 .dropdown-menu {
 	display: block;
 	float: left;
-	}
+}
 
-footer section {
-	float: right;
-	
-	}
+.copyright li, .navTopFooter li {
+  border-right: 1px solid white;
+  line-height: 12px;
+  padding: 0 10px;
+  float: left;
+}
+.copyright li:last-child, .navTopFooter li:last-child { border: none; }
+.copyright li:first-child { padding-left: 0; }
+.navTopFooter li:last-child { padding-right: 0; }
+
+.navMainFooter li.dropdown {
+  float: left;
+  width: 200px;
+}
+
+.navMainFooter li.dropdown > a {
+  display: block;
+  font-weight: bold;
+  text-decoration: underline;
+}
 
 /* ==========================================================================
    WordPress Generated Classes
