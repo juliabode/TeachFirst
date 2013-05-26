@@ -105,6 +105,7 @@ h1 {
 }
 
 .white-nav-border { border-bottom: 3px solid #fff }
+.white-nav-border > div { position: relative; }
 
 .navMain li, .navTop li {
   float: left;
@@ -143,6 +144,32 @@ h1 {
 
 .navMain ul.dropdown-menu a:hover {
 	color: rgb(50,50,50);
+}
+
+.social-media-links {
+  position: absolute;
+  top: 9px;
+  right: 0;
+}
+
+.social-media-links li a {
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.4);
+  border: 1px solid #3B5998;
+  border-radius: 3px;
+  display: block;
+}
+.social-media-links li a:hover { box-shadow: 1px 1px 6px rgba(255, 255, 255, 0.12); cursor: pointer; }
+
+.social-media-links .facebook-icon a {
+  background-image: url('../img/facebook.png');
+}
+
+.social-media-links .twitter-icon a {
+  background-image: url('../img/twitter.png');
+  border-color: #4099FF;
 }
 
 

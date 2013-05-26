@@ -29,6 +29,11 @@
             wp_nav_menu(array('theme_location' => 'bottom_slider_navigation', 'menu_class' => 'main-navigation nav nav-pills'));
           endif;
         ?>
+        <?php $options = get_option('plugin_options'); ?>
+        <ul class="social-media-links">
+          <li class="facebook-icon"><a href='<?php echo $options['tf_facebook_link']; ?>' target='_blank'></a></li>
+          <li class="twitter-icon"><a href='<?php echo $options['tf_twitter_link'];?>' target='_blank'></a></li>
+        </ul>
       </div>
     </div>
   </nav>
