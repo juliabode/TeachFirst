@@ -6,15 +6,18 @@ Template Name: 3 Spalten
 
 <div class="clearfix">
   <?php get_template_part('templates/page', 'header'); ?>
-  <div class="span4 alignleft">
-    <?php get_template_part('templates/content', 'page'); ?>
-  </div>
 
-  <div class="span4 alignleft">
-    <?php the_field('3-col-text_col2'); ?>
-  </div>
+  <div class="row-fluid">
+    <div class="span4">
+      <?php get_template_part('templates/content', 'page'); ?>
+    </div>
 
-  <div class="span4 alignleft">
-    <?php the_field('3-col-text_col3'); ?>
+    <div class="span4">
+      <?php the_field('3-col-text_col2'); ?>
+    </div>
+
+    <div class="span4 form-<?php echo get_field('3-col_choose-color'); ?>">
+      <?php the_field('3-col-text_col3'); ?>
+    </div>
   </div>
 </div>
