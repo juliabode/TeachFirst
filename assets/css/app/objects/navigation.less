@@ -1,0 +1,250 @@
+.navMain, .navTop {
+    background-color: @red;
+
+    li {
+        float: left;
+        list-style: none;
+        color: @white;
+    }
+
+    a:hover {
+        color: @grayDark;
+    }
+}
+
+.navTop {
+    height: 3.6rem;
+    .font-size(1.2, 3.6);
+    font-family: @specialFontFamily;
+
+    li {
+        padding-left: 20px;
+    }
+}
+
+.navMain {
+    font-family: @specialFontFamilyBold;
+    border-bottom: 35px solid @gray;
+
+    ul li.active > a {
+        text-decoration: underline;
+    }
+
+    ul.dropdown-menu {
+        position: absolute;
+        display: none;
+        left: 0;
+        .font-size(1.4, 4.0);
+        font-family: @specialFontFamily;
+        z-index: 3;
+        width: 1020px;
+        padding: 12px 0;
+        bottom: -52px;
+
+        li {
+            padding-right: 25px;
+            position: relative;
+
+            &.separator {
+                padding-right: 13px;
+
+                a {
+                    padding-right: 12px;
+                    border-right: 1px solid @grayDark;
+                }
+            }
+
+            a {
+                color: @grayDark;
+
+                &:hover {
+                    color: @red;
+                }
+            }
+
+            a.dropdown-toggle {
+                width: 70px;
+                height: 40px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                background: rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+        }
+
+        a:hover {
+            color: rgb(50,50,50);
+        }
+    }
+
+    li.dropdown:hover ul,
+    li.active ul {
+        display: block;
+    }
+}
+
+.white-nav-border,
+.main-navigation {
+    min-height: 52px;
+    position: relative;
+}
+
+.main-navigation {
+
+     > li {
+        padding: 0 28px 0 0;
+
+        > a {
+            .font-size(1.8, 5.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.white-nav-border {
+    border-bottom: 3px solid @white;
+
+    > div {
+        position: relative;
+    }
+}
+
+li.menu-startseite {
+    text-indent: -99999px;
+    background: url(../img/home.png) 5px 14px no-repeat;
+    width: 50px;
+    padding: 0;
+
+    &:hover {
+        background-image: url(../img/home_hover.png);
+    }
+
+    a {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 979px) {
+
+    .white-nav-border, .main-navigation {
+        border: none;
+        min-height: 49px;
+    }
+
+    .navMain {
+        border: 0;
+        position: relative;
+
+        li {
+            float: none;
+            padding: 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+
+            &:last-child {
+                border: 0;
+            }
+        }
+
+        ul.dropdown-menu {
+            position: initial;
+            margin: 0 10px;
+            padding: 0;
+            line-height: 30px;
+            width: auto;
+
+            a {
+                display: block;
+                padding: 3px 9px;
+            }
+
+            li {
+                padding-right: 0;
+
+                &:hover a {
+                    background: rgba(0,0,0,0.1);
+                    color: @gray;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+
+    li.separator {
+        display: none;
+    }
+
+    .navbar .btn-navbar {
+        float: left;
+        margin: 9px 5px 8px;
+        background: rgba(0,0,0,0.1) url(../img/nav-icon.png) 8px 6px no-repeat;
+        .border-radius(0);
+        .box-shadow(none);
+        .size(32px, 38px);
+        border: 0;
+        padding: 10px 10px;
+        display: block;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        &.collapsed {
+            background-color: transparent;
+        }
+    }
+
+    .nav-main {
+        position: absolute;
+        background-color: @red;
+        width: 100%;
+        z-index: 50;
+        margin-top: 52px;
+    }
+
+    .main-navigation > li > a {
+        line-height: 40px;
+        display: block;
+        padding: 0 10px;
+
+        &:hover {
+            background: rgba(0,0,0,0.1);
+        }
+    }
+
+    .nav-collapse .dropdown-menu li+li a {
+        margin: 0;
+    }
+
+    .nav-collapse, .nav-collapse.collapse {
+        position: absolute;
+        background-color: @red;
+        width: 100%;
+        z-index: 50;
+        margin-top: 50px;
+    }
+
+    .nav-collapse.collapse {
+        overflow: hidden;
+    }
+
+    li.menu-startseite {
+        background-position: 10px 10px; width: auto;
+    }
+    
+    .caret {
+        .size(0, 0);
+        border: 0.313em solid transparent;
+        border-bottom: none;
+        border-top-color: @white;
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+        right: -0.313em;
+    }
+
+    a:hover .caret {
+        border-top-color: @black;
+    }
+}

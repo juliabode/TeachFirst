@@ -1,0 +1,27 @@
+a,
+a:focus,
+*:focus { 
+    outline: 0;
+}
+
+a {
+    &:link, &:visited {
+        text-decoration: none;
+        color: @white;
+    }
+
+    &:active, &:hover {
+        text-decoration: none;
+        color: @red;
+    }
+}
+
+
+.content a {
+    text-decoration: none;
+    color: @red;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
