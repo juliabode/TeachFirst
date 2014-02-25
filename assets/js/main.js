@@ -332,3 +332,29 @@ jQuery(function() {
 
   jQuery("#5-tabs-wrapper").organicTabs();
 });
+
+jQuery.fn.log = function() {
+    if (window.console && console.log) {
+        console.log(this);
+    }
+    return this;
+}
+
+jQuery(document).ready(function() {
+	jQuery('#menu-hauptnavigation > li').hover(function() {
+		jQuery(this).siblings('.active').find('ul').hide();
+	}, function(){
+		jQuery(this).siblings('.active').find('ul').show();
+	});
+
+	jQuery(".flexslider .slides a:empty").css('padding', '0');
+
+       jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
+       jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
+
+       jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
+       jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
+
+       jQuery('#5-tabs-wrapper a.tab-header:first-child').addClass('current');
+
+});
