@@ -13,10 +13,11 @@
       <?php get_template_part('templates/entry-meta'); ?>
     </header>
     <div class="entry-summary">
-      <?php the_excerpt(); ?>
+      <?php the_content(); ?>
     </div>
     <footer>
-      <?php the_tags('<ul class="entry-tags"><li>','</li><li>','</li></ul>'); ?>
+      <?php _e('Categories:', 'roots'); ?> <?php the_category(', '); ?>
+      <?php the_tags(' | ' . __('Tags: ', 'roots'),', '); ?>
     </footer>
   </article>
 <?php endwhile; ?>

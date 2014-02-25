@@ -46,3 +46,33 @@ function create_taxonomy() {
   wp_insert_term( 'Fellow', 'tf_membership' );
 }
 add_action( 'init', 'create_taxonomy' );
+
+function add_custom_class( $classes, $menu ) {
+    $template_name = get_post_meta( $menu->object_id, '_wp_page_template', true );
+    $field_value = get_field('team_or_fellow', $menu->object_id );
+
+    if ( is_singular('tf_members') && has_term('Team', 'tf_membership') && $field_value == 'Team' && $template_name == 'page-members.php' ) {
+        $classes[] = 'active';
+    }
+    if ( is_singular('tf_members') && has_term('Fellow', 'tf_membership') && $field_value == 'Fellow' && $template_name == 'page-members.php' ) {
+        $classes[] = 'active';
+    }
+    if ( is_singular('tf_members') && has_term('Alumni', 'tf_membership') && $field_value == 'Alumni' && $template_name == 'page-members.php' ) {
+        $classes[] = 'active';
+    }
+    if ( is_singular('post') && $template_name == 'page-blog.php' ) {
+        $classes[] = 'active';
+    }
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'add_custom_class', 10, 2 );
+
+/**
+* Creates sharethis shortcode
+*/
+
+
+if (function_exists('st_makeEntries')) :
+	add_shortcode('sharethis', 'st_makeEntries');
+endif;
+add_filter('widget_text', 'do_shortcode');

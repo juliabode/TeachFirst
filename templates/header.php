@@ -3,37 +3,49 @@
     <div class="container">
       <?php
         if (has_nav_menu('top_slider_navigation')) :
-          wp_nav_menu(array('theme_location' => 'top_slider_navigation', 'menu_class' => 'alignright nav nav-pills'));
+          wp_nav_menu(array('theme_location' => 'top_slider_navigation', 'menu_class' => 'alignright'));
         endif;
       ?>
     </div>
   </nav>
 
-  <div class="slider">
-    <a href="<?php echo home_url(); ?>"><img class="logo" style="" src="<?php echo get_bloginfo("template_url");?>/assets/img/TFD-logo-weiss.png" /></a>
-    <a href="https://bewerbung.teachfirst.de/"><img class="apply-now" src="<?php echo get_bloginfo("template_url");?>/assets/img/stoerer.png" /></a>
-    <?php global $wp_query;
-          $page_parent_image = get_field('header_image', $wp_query->post->post_parent);
-      if ( $page_parent_image ) {
-        echo wp_get_attachment_image( $page_parent_image, 'full' );
-      } else {
-        echo do_shortcode( '[responsive_slider]' );
-      } ?>
+<?php global $wp_query;
+   $page_parent_image = function_exists('get_field') ? get_field('header_image', $wp_query->post->post_parent) : '';
+    if ( $page_parent_image ) {
+      $slider_or_image =  wp_get_attachment_image( $page_parent_image, 'full' );
+      $header_class = 'slider header-img';
+    } else {
+      $slider_or_image = do_shortcode( '[responsive_slider]' );
+      $header_class = 'slider';
+    }
+?>
+
+  <div class="<?php echo $header_class; ?>">
+    <a href="<?php echo home_url(); ?>" class="logo"><?php echo get_bloginfo('name'); ?></a>
+    <?php echo $slider_or_image; ?>
   </div>
 
-  <nav class="navMain" role="navigation">
+  <nav class="navMain navbar navbar-default" role="navigation">
     <div class="white-nav-border">
-      <div class="container">
+      <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+      </a>
+      <div class="container nav-main nav-collapse">
         <?php
           if (has_nav_menu('bottom_slider_navigation')) :
-            wp_nav_menu(array('theme_location' => 'bottom_slider_navigation', 'menu_class' => 'main-navigation nav nav-pills'));
+            wp_nav_menu(array('theme_location' => 'bottom_slider_navigation', 'menu_class' => 'main-navigation'));
           endif;
         ?>
-        <?php $options = get_option('plugin_options'); ?>
-        <ul class="social-media-links">
-          <li class="facebook-icon"><a href='<?php echo $options['tf_facebook_link']; ?>' target='_blank'></a></li>
-          <li class="twitter-icon"><a href='<?php echo $options['tf_twitter_link'];?>' target='_blank'></a></li>
-        </ul>
+      </div>
+    </div>
+
+  <?php $options = get_option('plugin_options'); ?>
+
+    <div class="call-to-action-banner">
+      <div class="banner-item" style="<?php echo 'background:' . $options['tf_become_fellow_bg_color']; ?>">
+        <a target="_blank" href="<?php echo $options['tf_become_fellow_link']; ?>" title="<?php echo $options['tf_become_fellow_text']; ?>" style="<?php echo 'color:' . $options['tf_become_fellow_text_color']; ?>"><?php echo $options['tf_become_fellow_text']; ?></a>
+      </div>
+      <div class="banner-item donater-link" style="<?php echo 'background:' . $options['tf_become_donator_bg_color']; ?>">
+         <a href="<?php echo $options['tf_become_donator_link']; ?>" title="<?php echo $options['tf_become_donator_text']; ?>" style="<?php echo 'color:' . $options['tf_become_donator_text_color']; ?>"><?php echo $options['tf_become_donator_text']; ?></a>
       </div>
     </div>
   </nav>
