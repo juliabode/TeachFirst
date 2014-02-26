@@ -14,11 +14,6 @@ Template Name: Blog
     ?>
   </div>
 
-  <div class="span4">
-    <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-      <?php include roots_sidebar_path(); ?>
-    </aside><!-- /.sidebar -->
-  </div>
 </div>
 
 <?php wp_reset_query(); ?>
