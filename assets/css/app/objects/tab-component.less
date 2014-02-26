@@ -1,0 +1,102 @@
+.tab-nav {
+    padding-bottom: 5px;
+    margin-top: 20px;
+
+    a {
+        color: #000000;
+    }
+}
+
+.tab-header {
+    display: block;
+    font-family: 'thesansb5plain', sans-serif;
+    height: 55px;
+    margin: 0;
+    background: #cac0b6;
+    text-align: center;
+    padding: 13px 2%;
+    font-size: 24px;
+    -webkit-transition: background 350ms;
+    -moz-transition: background 350ms;
+    -ms-transition: background 350ms;
+    -o-transition: background 350ms;
+     transition: background 350ms;
+    position: relative;
+
+    &:last-child {
+        margin-right: 0;
+
+        &:after {
+            border: none;
+        }
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 30px 0 30px 26px;
+        border-color: transparent transparent transparent #ffffff;
+        right: -26px;
+        top: -2px;
+        z-index: 5;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 28px 0 28px 24px;
+        border-color: transparent transparent transparent #cac0b6;
+        right: -24px;
+        top: 0;
+        z-index: 5;
+        -webkit-transition: border 350ms;
+        -moz-transition: border 350ms;
+        -ms-transition: border 350ms;
+        -o-transition: border 350ms;
+        transition: border 350ms;
+    }
+}
+
+
+.tab-header:hover {
+  text-decoration: underline;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+}
+.tab-header.current { color: #ffffff; }
+
+.tab-header.current { background: rgb(210,10,10); }
+.tab-header.current:hover { box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.42); }
+.tab-header.current:after { border-color: transparent transparent transparent rgb(210,10,10); }
+
+.tab-header:nth-child(1) { z-index: 5; }
+.tab-header:nth-child(2) { z-index: 4; }
+.tab-header:nth-child(3) { z-index: 3; }
+.tab-header:nth-child(4) { z-index: 2; }
+.tab-header:nth-child(5) { z-index: 1; }
+
+.tab-content-wrap {
+  padding: 12px;
+}
+
+.tab-content-wrap p {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.tab-span12 { width: 100%; }
+.tab-span6 { width: 50%; }
+.tab-span4 { width: 33.3% }
+.tab-span3 { width: 25%; }
+.tab-span2 { width: 20%; }
+
+.tab-header.tab-span6.current { background: #07B9E4; }
+.tab-header.tab-span6.current:after { border-color: transparent transparent transparent #07B9E4; }
+
+.tab-header.tab-span4.current { background: #93BD10; }
+.tab-header.tab-span4.current:after { border-color: transparent transparent transparent #93BD10; }
