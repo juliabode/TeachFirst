@@ -1,0 +1,61 @@
+.accordion ul li {
+  height: 50px;
+  border-top:1px solid #dfdfdf;
+  overflow: hidden;
+}
+
+.accordion ul li:first-child {
+  border-top:none;
+}
+
+.accordion h2 { margin: 0; }
+.accordion h2 a {
+  font-family: 'thesansb5plain', sans-serif;
+  color: #333;
+  display: block;
+  position: relative;
+  -webkit-transition:  color 0.2s ease-in-out;
+  -moz-transition:  color 0.2s ease-in-out;
+  -o-transition:  color 0.2s ease-in-out;
+  -ms-transition:  color 0.2s ease-in-out;
+  transition:  color 0.2s ease-in-out;
+  font-weight: 300;
+  line-height: 50px;
+}
+.accordion h2 a:hover, .accordion li.acc-open h2 a{
+  color: rgb(210,10,10);
+  padding-left: 25px;
+}
+
+.acc-content {
+  padding: 5px 0px 30px 0px;
+}
+
+.accordion h2 a span {
+  background: transparent url(../img/down.png) no-repeat center center;
+  text-indent: -9000px;
+  width: 13px;
+  height: 14px;
+  position: absolute;
+  top: 50%;
+  left: -26px;
+  margin-top: -6px;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.accordion h2 a:hover span {
+  opacity: 1;
+  left: 3px;
+}
+.accordion li.acc-open h2 span {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  left: 5px;
+  opacity: 1;
+}
