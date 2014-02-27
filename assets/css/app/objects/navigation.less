@@ -141,6 +141,7 @@ li.menu-startseite {
             float: none;
             padding: 0;
             border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: relative;
 
             &:last-child {
                 border: 0;
@@ -232,6 +233,15 @@ li.menu-startseite {
     li.menu-startseite {
         background-position: 10px 10px; width: auto;
     }
+
+    a.dropdown-toggle {
+        .size(40px, 70px);
+        text-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.1);
+    }
     
     .caret {
         .size(0, 0);
@@ -241,7 +251,6 @@ li.menu-startseite {
         vertical-align: middle;
         display: inline-block;
         position: relative;
-        right: -0.313em;
     }
 
     a:hover .caret {
