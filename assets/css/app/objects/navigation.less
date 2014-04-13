@@ -178,21 +178,33 @@ li.menu-startseite {
 
     .navbar .btn-navbar {
         float: left;
-        margin: 9px 5px 8px;
-        background: rgba(0,0,0,0.1) url(../img/nav-icon.png) 8px 6px no-repeat;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        background: rgba(0,0,0,0.1);
         .border-radius(0);
         .box-shadow(none);
-        .size(32px, 38px);
-        border: 0;
-        padding: 10px 10px;
         display: block;
-
-        &:hover {
-            background-color: rgba(0,0,0,0.1);
-        }
 
         &.collapsed {
             background-color: transparent;
+        }
+
+        .fa-bars {
+            font-size: 28px;
+            line-height: 9px;
+            padding: 10px;
+            margin: 10px;
+            color: @white;
+        }
+
+        &:hover {
+            background-color: rgba(0,0,0,0.1);
+            cursor: pointer;
+
+            .fa-bars {
+                color: @grayLight;
+            }
         }
     }
 
@@ -202,6 +214,15 @@ li.menu-startseite {
         width: 100%;
         z-index: 50;
         margin-top: 52px;
+
+        li.dropdown:hover ul,
+        li.active ul {
+            display: none;
+        }
+
+        li.dropdown.open .dropdown-menu {
+            display: block;
+        }
     }
 
     .main-navigation > li > a {
@@ -235,12 +256,13 @@ li.menu-startseite {
     }
 
     a.dropdown-toggle {
-        .size(40px, 70px);
+        .size(41px, 70px);
         text-align: center;
         position: absolute;
         top: 0;
         right: 0;
         background: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
     }
     
     .caret {
@@ -251,9 +273,5 @@ li.menu-startseite {
         vertical-align: middle;
         display: inline-block;
         position: relative;
-    }
-
-    a:hover .caret {
-        border-top-color: @black;
     }
 }

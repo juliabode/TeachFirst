@@ -28,8 +28,9 @@
   <nav class="navMain navbar navbar-default" role="navigation">
     <div class="white-nav-border">
       <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+        <i class="fa fa-bars"></i>
       </a>
-      <div class="container nav-main nav-collapse">
+      <div class="container nav-main nav-collapse collapse">
         <?php
           if (has_nav_menu('bottom_slider_navigation')) :
             wp_nav_menu(array('theme_location' => 'bottom_slider_navigation', 'menu_class' => 'main-navigation'));
