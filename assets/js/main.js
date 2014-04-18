@@ -4,252 +4,252 @@ jQuery.easing['jswing'] = jQuery.easing['swing'];
 
 jQuery.extend( jQuery.easing,
 {
-	def: 'easeInOutExpo',
-	swing: function (x, t, b, c, d) {
-		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
-	},
-	easeInOutExpo: function (x, t, b, c, d) {
-		if (t==0) return b;
-		if (t==d) return b+c;
-		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
-	},
+    def: 'easeInOutExpo',
+    swing: function (x, t, b, c, d) {
+        return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+    },
+    easeInOutExpo: function (x, t, b, c, d) {
+        if (t==0) return b;
+        if (t==d) return b+c;
+        if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+        return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+    },
 });
 
 (function( window, $, undefined ) {
 
-	var $event = $.event, resizeTimeout;
+    var $event = $.event, resizeTimeout;
 
-	$event.special.smartresize 	= {
-		setup: function() {
-			$(this).bind( "resize", $event.special.smartresize.handler );
-		},
-		teardown: function() {
-			$(this).unbind( "resize", $event.special.smartresize.handler );
-		},
-		handler: function( event, execAsap ) {
-			// Save the context
-			var context = this,
-				args 	= arguments;
+    $event.special.smartresize  = {
+        setup: function() {
+            $(this).bind( "resize", $event.special.smartresize.handler );
+        },
+        teardown: function() {
+            $(this).unbind( "resize", $event.special.smartresize.handler );
+        },
+        handler: function( event, execAsap ) {
+            // Save the context
+            var context = this,
+                args    = arguments;
 
-			// set correct event type
-			event.type = "smartresize";
+            // set correct event type
+            event.type = "smartresize";
 
-			if ( resizeTimeout ) { clearTimeout( resizeTimeout ); }
-			resizeTimeout = setTimeout(function() {
-				jQuery.event.handle.apply( context, args );
-			}, execAsap === "execAsap"? 0 : 100 );
-		}
-	};
-
-	$.fn.smartresize 			= function( fn ) {
-		return fn ? this.bind( "smartresize", fn ) : this.trigger( "smartresize", ["execAsap"] );
-	};
-
-	$.Accordion 				= function( options, element ) {
-
-		this.$el			= $( element );
-		// list items
-		this.$items			= this.$el.children('ul').children('li');
-		// total number of items
-		this.itemsCount		= this.$items.length;
-
-		// initialize accordion
-		this._init( options );
-
-	};
-
-	$.Accordion.defaults 		= {
-		// index of opened item. -1 means all are closed by default.
-		open			: -1,
-		// if set to true, only one item can be opened. Once one item is opened, any other that is opened will be closed first
-		oneOpenedItem	: true,
-		// speed of the open / close item animation
-		speed			: 600,
-		// easing of the open / close item animation
-		easing			: 'easeInOutExpo',
-		// speed of the scroll to action animation
-		scrollSpeed		: 900,
-		// easing of the scroll to action animation
-		scrollEasing	: 'easeInOutExpo'
+            if ( resizeTimeout ) { clearTimeout( resizeTimeout ); }
+            resizeTimeout = setTimeout(function() {
+                jQuery.event.handle.apply( context, args );
+            }, execAsap === "execAsap"? 0 : 100 );
+        }
     };
 
-	$.Accordion.prototype 		= {
-		_init 				: function( options ) {
+    $.fn.smartresize            = function( fn ) {
+        return fn ? this.bind( "smartresize", fn ) : this.trigger( "smartresize", ["execAsap"] );
+    };
 
-			this.options 		= $.extend( true, {}, $.Accordion.defaults, options );
+    $.Accordion                 = function( options, element ) {
 
-			// validate options
-			this._validate();
+        this.$el            = $( element );
+        // list items
+        this.$items         = this.$el.children('ul').children('li');
+        // total number of items
+        this.itemsCount     = this.$items.length;
 
-			// current is the index of the opened item
-			this.current		= this.options.open;
+        // initialize accordion
+        this._init( options );
 
-			// hide the contents so we can fade it in afterwards
-			this.$items.find('div.acc-content').hide();
+    };
 
-			// save original height and top of each item
-			this._saveDimValues();
+    $.Accordion.defaults        = {
+        // index of opened item. -1 means all are closed by default.
+        open            : -1,
+        // if set to true, only one item can be opened. Once one item is opened, any other that is opened will be closed first
+        oneOpenedItem   : true,
+        // speed of the open / close item animation
+        speed           : 600,
+        // easing of the open / close item animation
+        easing          : 'easeInOutExpo',
+        // speed of the scroll to action animation
+        scrollSpeed     : 900,
+        // easing of the scroll to action animation
+        scrollEasing    : 'easeInOutExpo'
+    };
 
-			// if we want a default opened item...
-			if( this.current != -1 )
-				this._toggleItem( this.$items.eq( this.current ) );
+    $.Accordion.prototype       = {
+        _init               : function( options ) {
 
-			// initialize the events
-			this._initEvents();
+            this.options        = $.extend( true, {}, $.Accordion.defaults, options );
 
-		},
-		_saveDimValues		: function() {
+            // validate options
+            this._validate();
 
-			this.$items.each( function() {
+            // current is the index of the opened item
+            this.current        = this.options.open;
 
-				var $item		= $(this);
+            // hide the contents so we can fade it in afterwards
+            this.$items.find('div.acc-content').hide();
 
-				$item.data({
-					originalHeight 	: $item.find('a:first').height(),
-					offsetTop		: $item.offset().top - 40
-				});
+            // save original height and top of each item
+            this._saveDimValues();
 
-			});
+            // if we want a default opened item...
+            if( this.current != -1 )
+                this._toggleItem( this.$items.eq( this.current ) );
 
-		},
-		// validate options
-		_validate			: function() {
+            // initialize the events
+            this._initEvents();
 
-			// open must be between -1 and total number of items, otherwise we set it to -1
-			if( this.options.open < -1 || this.options.open > this.itemsCount - 1 )
-				this.options.open = -1;
+        },
+        _saveDimValues      : function() {
 
-		},
-		_initEvents			: function() {
+            this.$items.each( function() {
 
-			var instance	= this;
+                var $item       = $(this);
 
-			// open / close item
-			this.$items.find('a:first').bind('click.accordion', function( event ) {
+                $item.data({
+                    originalHeight  : $item.find('a:first').height(),
+                    offsetTop       : $item.offset().top - 40
+                });
 
-				var $item			= $(this).parents('li');
+            });
 
-				// close any opened item if oneOpenedItem is true
-				if( instance.options.oneOpenedItem && instance._isOpened() && instance.current!== $item.index() ) {
+        },
+        // validate options
+        _validate           : function() {
 
-					instance._toggleItem( instance.$items.eq( instance.current ) );
+            // open must be between -1 and total number of items, otherwise we set it to -1
+            if( this.options.open < -1 || this.options.open > this.itemsCount - 1 )
+                this.options.open = -1;
 
-				}
+        },
+        _initEvents         : function() {
 
-				// open / close item
-				instance._toggleItem( $item );
+            var instance    = this;
 
-				return false;
+            // open / close item
+            this.$items.find('a:first').bind('click.accordion', function( event ) {
 
-			});
+                var $item           = $(this).parents('li');
 
-			$(window).bind('smartresize.accordion', function( event ) {
+                // close any opened item if oneOpenedItem is true
+                if( instance.options.oneOpenedItem && instance._isOpened() && instance.current!== $item.index() ) {
 
-				// reset orinal item values
-				instance._saveDimValues();
+                    instance._toggleItem( instance.$items.eq( instance.current ) );
 
-				// reset the content's height of any item that is currently opened
-				instance.$el.find('li.acc-open').each( function() {
+                }
 
-					var $this	= $(this);
-					$this.css( 'height', $this.data( 'originalHeight' ) + $this.find('div.acc-content').outerHeight( true ) );
+                // open / close item
+                instance._toggleItem( $item );
 
-				});
+                return false;
 
-				// scroll to current
-				if( instance._isOpened() )
-				instance._scroll();
+            });
 
-			});
+            $(window).bind('smartresize.accordion', function( event ) {
 
-		},
-		// checks if there is any opened item
-		_isOpened			: function() {
+                // reset orinal item values
+                instance._saveDimValues();
 
-			return ( this.$el.find('li.acc-open').length > 0 );
+                // reset the content's height of any item that is currently opened
+                instance.$el.find('li.acc-open').each( function() {
 
-		},
-		// open / close item
-		_toggleItem			: function( $item ) {
+                    var $this   = $(this);
+                    $this.css( 'height', $this.data( 'originalHeight' ) + $this.find('div.acc-content').outerHeight( true ) );
 
-			var $content = $item.find('div.acc-content');
+                });
 
-			( $item.hasClass( 'acc-open' ) )
+                // scroll to current
+                if( instance._isOpened() )
+                instance._scroll();
 
-				? ( this.current = -1, $content.stop(true, true).fadeOut( this.options.speed ), $item.removeClass( 'acc-open' ).stop().animate({
-					height	: $item.data( 'originalHeight' )
-				}, this.options.speed, this.options.easing ) )
+            });
 
-				: ( this.current = $item.index(), $content.stop(true, true).fadeIn( this.options.speed ), $item.addClass( 'acc-open' ).stop().animate({
-					height	: $item.data( 'originalHeight' ) + $content.outerHeight( true )
-				}, this.options.speed, this.options.easing ), this._scroll( this ) )
+        },
+        // checks if there is any opened item
+        _isOpened           : function() {
 
-		},
-		// scrolls to current item or last opened item if current is -1
-		_scroll				: function( instance ) {
+            return ( this.$el.find('li.acc-open').length > 0 );
 
-			var instance	= instance || this, current;
+        },
+        // open / close item
+        _toggleItem         : function( $item ) {
 
-			( instance.current !== -1 ) ? current = instance.current : current = instance.$el.find('li.acc-open:last').index();
+            var $content = $item.find('div.acc-content');
 
-			$('html, body').stop().animate({
-				scrollTop	: ( instance.options.oneOpenedItem ) ? instance.$items.eq( current ).data( 'offsetTop' ) : instance.$items.eq( current ).offset().top
-			}, instance.options.scrollSpeed, instance.options.scrollEasing );
+            ( $item.hasClass( 'acc-open' ) )
 
-		}
-	};
+                ? ( this.current = -1, $content.stop(true, true).fadeOut( this.options.speed ), $item.removeClass( 'acc-open' ).stop().animate({
+                    height  : $item.data( 'originalHeight' )
+                }, this.options.speed, this.options.easing ) )
 
-	var logError 				= function( message ) {
+                : ( this.current = $item.index(), $content.stop(true, true).fadeIn( this.options.speed ), $item.addClass( 'acc-open' ).stop().animate({
+                    height  : $item.data( 'originalHeight' ) + $content.outerHeight( true )
+                }, this.options.speed, this.options.easing ), this._scroll( this ) )
 
-		if ( this.console ) {
+        },
+        // scrolls to current item or last opened item if current is -1
+        _scroll             : function( instance ) {
 
-			console.error( message );
+            var instance    = instance || this, current;
 
-		}
+            ( instance.current !== -1 ) ? current = instance.current : current = instance.$el.find('li.acc-open:last').index();
 
-	};
+            $('html, body').stop().animate({
+                scrollTop   : ( instance.options.oneOpenedItem ) ? instance.$items.eq( current ).data( 'offsetTop' ) : instance.$items.eq( current ).offset().top
+            }, instance.options.scrollSpeed, instance.options.scrollEasing );
 
-	$.fn.accordion 				= function( options ) {
+        }
+    };
 
-		if ( typeof options === 'string' ) {
+    var logError                = function( message ) {
 
-			var args = Array.prototype.slice.call( arguments, 1 );
+        if ( this.console ) {
 
-			this.each(function() {
+            console.error( message );
 
-				var instance = $.data( this, 'accordion' );
+        }
 
-				if ( !instance ) {
-					logError( "cannot call methods on accordion prior to initialization; " +
-					"attempted to call method '" + options + "'" );
-					return;
-				}
+    };
 
-				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
-					logError( "no such method '" + options + "' for accordion instance" );
-					return;
-				}
+    $.fn.accordion              = function( options ) {
 
-				instance[ options ].apply( instance, args );
+        if ( typeof options === 'string' ) {
 
-			});
+            var args = Array.prototype.slice.call( arguments, 1 );
 
-		}
-		else {
+            this.each(function() {
 
-			this.each(function() {
-				var instance = $.data( this, 'accordion' );
-				if ( !instance ) {
-					$.data( this, 'accordion', new $.Accordion( options, this ) );
-				}
-			});
+                var instance = $.data( this, 'accordion' );
 
-		}
+                if ( !instance ) {
+                    logError( "cannot call methods on accordion prior to initialization; " +
+                    "attempted to call method '" + options + "'" );
+                    return;
+                }
 
-		return this;
+                if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
+                    logError( "no such method '" + options + "' for accordion instance" );
+                    return;
+                }
 
-	};
+                instance[ options ].apply( instance, args );
+
+            });
+
+        }
+        else {
+
+            this.each(function() {
+                var instance = $.data( this, 'accordion' );
+                if ( !instance ) {
+                    $.data( this, 'accordion', new $.Accordion( options, this ) );
+                }
+            });
+
+        }
+
+        return this;
+
+    };
 
 })( window, jQuery );
 
@@ -371,15 +371,17 @@ var scrollbarWidth = function() {
 jQuery(document).ready(function() {
     detectViewPort(scrollbarWidth());
 
-	jQuery(".flexslider .slides a:empty").css('padding', '0');
+    jQuery(".flexslider .slides a:empty").css('padding', '0');
 
-       jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
-       jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
+   jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
+   jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
 
-       jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
-       jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
+   jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
+   jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
 
-       jQuery('#5-tabs-wrapper a.tab-header:first-child').addClass('current');
+   jQuery('#5-tabs-wrapper a.tab-header:first-child').addClass('current');
+
+   jQuery('.slides h2.slide-title').wrap('<div class="slide-title-wrapper"></div>');
 
 });
 
