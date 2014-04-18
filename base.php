@@ -8,7 +8,7 @@
 
     <div class="content container-fluid row">
 
-      <?php get_template_part('templates/social_media_icons'); ?>
+      <?php get_template_part('templates/social-media-icons'); ?>
 
       <div class="main" role="main">
         <?php include roots_template_path(); ?>
