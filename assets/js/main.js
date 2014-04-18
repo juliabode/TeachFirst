@@ -340,12 +340,36 @@ jQuery.fn.log = function() {
     return this;
 }
 
+var detectViewPort = function(scrollBarWidth) {
+    var viewPortWidth = jQuery(window).width();
+
+    if (viewPortWidth+scrollBarWidth > 979) {
+        jQuery('#menu-hauptnavigation > li').hover(function() {
+            jQuery(this).siblings('.active').find('ul').hide();
+        }, function(){
+            jQuery(this).siblings('.active').find('ul').show();
+        });
+    } else {
+        jQuery( "#menu-hauptnavigation > li" ).off( "mouseenter mouseleave" );
+    }
+}
+
+var scrollbarWidth = function() {
+    if(jQuery(document).height() > jQuery(window).height()){
+        jQuery('body').append('<div id="fakescrollbar" style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"></div>');
+        fakeScrollBar = jQuery('#fakescrollbar');
+        fakeScrollBar.append('<div style="height:100px;">&nbsp;</div>');
+        var w1 = fakeScrollBar.find('div').innerWidth();
+        fakeScrollBar.css('overflow-y', 'scroll');
+        var w2 = jQuery('#fakescrollbar').find('div').html('html is required to init new width.').innerWidth();
+        fakeScrollBar.remove();
+        return (w1-w2);
+    }
+    return 0;
+}
+
 jQuery(document).ready(function() {
-	jQuery('#menu-hauptnavigation > li').hover(function() {
-		jQuery(this).siblings('.active').find('ul').hide();
-	}, function(){
-		jQuery(this).siblings('.active').find('ul').show();
-	});
+    detectViewPort(scrollbarWidth());
 
 	jQuery(".flexslider .slides a:empty").css('padding', '0');
 
@@ -357,4 +381,8 @@ jQuery(document).ready(function() {
 
        jQuery('#5-tabs-wrapper a.tab-header:first-child').addClass('current');
 
+});
+
+jQuery(window).resize(function () {
+   detectViewPort();
 });

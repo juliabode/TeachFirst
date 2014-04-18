@@ -3,6 +3,10 @@
     margin-bottom: 0;
     overflow: hidden;
     max-height: 350px;
+
+    @media (max-width: 369px) {
+        overflow: initial;
+    }
 }
 
 .responsive-slider.flexslider {
@@ -45,6 +49,18 @@
 
         @media (min-width: 1021px) {
             width: 1020px;
+        }
+    }
+
+
+    @media (min-width: 1021px) {
+        .slide-title-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-height: 350px;
         }
     }
 
