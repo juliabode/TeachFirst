@@ -152,8 +152,9 @@
 .font-size(@sizeValue: 1.6, @lineHeight: @sizeValue * 1.5) {
     @remValue: @sizeValue;
     @pxValue: (@sizeValue * 10);
+    @pxLineHeight: (@lineHeight * 10);
     font-size: ~"@{pxValue}px";
-    line-height: (@lineHeight * 10)px;
+    line-height: ~"@{pxLineHeight}px";
     font-size: ~"@{remValue}rem";
     line-height: ~"@{lineHeight}rem";
 }
@@ -286,6 +287,14 @@
 }
 
 // Transformations
+.transform(@property) {
+  -webkit-transform: @property;
+     -moz-transform: @property;
+      -ms-transform: @property;
+       -o-transform: @property;
+          transform: @property;
+}
+
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
      -moz-transform: rotate(@degrees);
@@ -320,6 +329,18 @@
      -moz-transform: translate3d(@x, @y, @z);
        -o-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
+}
+
+.transform-style(@property) {
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.perspective(@x) {
+    -webkit-perspective: @x;
+    -moz-perspective: @x;
+    perspective: @x;
 }
 
 // Backface visibility
