@@ -3,44 +3,44 @@
 // Custom functions
 
 function create_post_type() {
-	register_post_type( 'tf_faq',
-		array(
-			'labels' => array(
-				'name' => __( 'FAQ' ),
-				'singular_name' => __( 'FAQ' )
-			),
-		'public' => true,
-		'has_archive' => true,
-    'menu_position' => 5,
-		)
-	);
+    register_post_type( 'tf_faq',
+        array(
+            'labels' => array(
+                'name' => __( 'FAQ' ),
+                'singular_name' => __( 'FAQ' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'menu_position' => 5,
+        )
+    );
 
-	register_post_type( 'tf_members',
-		array(
-			'labels' => array(
-				'name' => __( 'Porträts' ),
-				'singular_name' => __( 'Porträt' )
-			),
-		'public' => true,
-		'has_archive' => true,
-    'menu_position' => 5,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
-		)
-	);
+    register_post_type( 'tf_members',
+        array(
+            'labels' => array(
+                'name' => __( 'Porträts' ),
+                'singular_name' => __( 'Porträt' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'menu_position' => 5,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+        )
+    );
 
 }
 add_action( 'init', 'create_post_type' );
 
 function create_taxonomy() {
   register_taxonomy( 'tf_membership', 'tf_members',
-		array(
-			'labels' => array(
-				'name' => __( 'Zugehörigkeiten' ),
-				'singular_name' => __( 'Zugehörigkeit' )
-			),
+        array(
+            'labels' => array(
+                'name' => __( 'Zugehörigkeiten' ),
+                'singular_name' => __( 'Zugehörigkeit' )
+            ),
     'hierarchical' => true,
-		'public' => true,
-		)
+        'public' => true,
+        )
   );
   wp_insert_term( 'Team', 'tf_membership' );
   wp_insert_term( 'Fellow', 'tf_membership' );
@@ -73,7 +73,7 @@ add_filter( 'nav_menu_css_class', 'add_custom_class', 10, 2 );
 
 
 if (function_exists('st_makeEntries')) :
-	add_shortcode('sharethis', 'st_makeEntries');
+    add_shortcode('sharethis', 'st_makeEntries');
 endif;
 add_filter('widget_text', 'do_shortcode');
 
