@@ -1,6 +1,6 @@
 <header class="banner" role="banner">
   <nav class="navTop" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
       <?php
         if (has_nav_menu('top_slider_navigation')) :
           wp_nav_menu(array('theme_location' => 'top_slider_navigation', 'menu_class' => 'alignright'));

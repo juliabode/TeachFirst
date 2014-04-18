@@ -1,7 +1,7 @@
 <footer class="content-info clearfix" role="contentinfo">
  <?php $options = get_option('plugin_options'); ?>
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="clearfix">
       <ul class="copyright alignleft">
         <li>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></li>
