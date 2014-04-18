@@ -16,8 +16,14 @@ Template Name: 3 Spalten
       <?php the_field('3-col-text_col2'); ?>
     </div>
 
-    <div class="span4 form-<?php echo get_field('3-col_choose-color'); ?>">
-      <?php the_field('3-col-text_col3'); ?>
-    </div>
+    <?php if (get_field('3-col_choose-color') == '#ffffff') { ?>
+      <div class="span4">
+        <?php the_field('3-col-text_col3'); ?>
+      </div>
+    <?php } else { ?>
+      <div class="span4 p-l-l p-r-l" style="background-color:<?php the_field('3-col_choose-color'); ?>">
+        <?php the_field('3-col-text_col3'); ?>
+      </div>
+    <?php } ?>
   </div>
 </div>
