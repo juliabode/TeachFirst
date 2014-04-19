@@ -31,7 +31,10 @@ function merge_option_default_variables() {
 }
 
 function create_theme_options_page() {
-  add_dashboard_page('Zusätzliche Einstellungen', 'Theme Options', 'administrator', 'tf_options', 'build_options_page');
+    // Global variable for Themes' settings page hook
+    global $tf_settings_page;
+
+    add_menu_page('Zusätzliche Einstellungen', 'Teachfirst Optionen', 'read', 'tf_options', 'build_options_page', 'dashicons-lightbulb');
 }
 add_action('admin_menu', 'create_theme_options_page');
 
