@@ -340,7 +340,49 @@ jQuery.fn.log = function() {
     return this;
 }
 
+var BrowserDetect =
+{
+    init: function ()
+    {
+        this.browser = this.searchString(this.dataBrowser) || "Other";
+        this.version = this.searchVersion(navigator.userAgent) ||       this.searchVersion(navigator.appVersion) || "Unknown";
+    },
+
+    searchString: function (data)
+    {
+        for (var i=0 ; i < data.length ; i++)
+        {
+            var dataString = data[i].string;
+            this.versionSearchString = data[i].subString;
+
+            if (dataString.indexOf(data[i].subString) != -1)
+            {
+                return data[i].identity;
+            }
+        }
+    },
+
+    searchVersion: function (dataString)
+    {
+        var index = dataString.indexOf(this.versionSearchString);
+        if (index == -1) return;
+        return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+    },
+
+    dataBrowser:
+    [
+        { string: navigator.userAgent, subString: "Chrome",  identity: "Chrome" },
+        { string: navigator.userAgent, subString: "MSIE",    identity: "Explorer" },
+        { string: navigator.userAgent, subString: "Firefox", identity: "Firefox" },
+        { string: navigator.userAgent, subString: "Safari",  identity: "Safari" },
+        { string: navigator.userAgent, subString: "Opera",   identity: "Opera" }
+    ]
+
+};
+BrowserDetect.init();
+
 var detectViewPort = function(scrollBarWidth) {
+    var scrollBarWidth = scrollBarWidth || 0;
     var viewPortWidth = jQuery(window).width();
 
     if (viewPortWidth+scrollBarWidth > 979) {
@@ -369,22 +411,27 @@ var scrollbarWidth = function() {
 }
 
 jQuery(document).ready(function() {
+
+    if (BrowserDetect.browser == 'Explorer') {
+        jQuery('body').addClass('ie');
+    }
+
     detectViewPort(scrollbarWidth());
 
     jQuery(".flexslider .slides a:empty").css('padding', '0');
 
-   jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
-   jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
+    jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
+    jQuery('body.single-tf_members').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
 
-   jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
-   jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
+    jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').first().parent().parent().addClass('active');
+    jQuery('body.single-post').find('.navMain ul.dropdown-menu li.active').slice(1).removeClass('active');
 
-   jQuery('#5-tabs-wrapper a.tab-header:first-child').addClass('current');
+    jQuery('#5-tabs-wrapper a.tab-header:first-child').addClass('current');
 
-   jQuery('.slides h2.slide-title').wrap('<div class="slide-title-wrapper"></div>');
+    jQuery('.slides h2.slide-title').wrap('<div class="slide-title-wrapper"></div>');
 
 });
 
 jQuery(window).resize(function () {
-   detectViewPort();
+    detectViewPort(scrollbarWidth());
 });

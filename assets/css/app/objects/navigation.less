@@ -38,12 +38,11 @@
         position: absolute;
         display: none;
         left: 0;
-        .font-size(1.4, 4.0);
+        .font-size(1.4, 3.5);
         font-family: @specialFontFamily;
         z-index: 3;
         width: 1020px;
-        padding: 12px 0;
-        bottom: -52px;
+        bottom: -35px;
 
         li {
             padding-right: 25px;
@@ -85,12 +84,13 @@
     li.dropdown:hover ul,
     li.active ul {
         display: block;
+        background-color: @gray;
     }
 }
 
 .white-nav-border,
 .main-navigation {
-    min-height: 52px;
+    height: 52px;
     position: relative;
 }
 
@@ -130,11 +130,19 @@ li.menu-startseite {
     }
 }
 
+.ie {
+
+    .white-nav-border {
+        border: none;
+    }
+}
+
 @media screen and (max-width: 979px) {
 
     .white-nav-border, .main-navigation {
         border: none;
         min-height: 49px;
+        height: auto;
     }
 
     .navMain {
@@ -149,6 +157,11 @@ li.menu-startseite {
 
             &:last-child {
                 border: 0;
+            }
+
+            &.dropdown:hover ul,
+            &.active ul {
+                background-color: transparent;
             }
         }
 
