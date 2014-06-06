@@ -412,8 +412,13 @@ var scrollbarWidth = function() {
 
 jQuery(document).ready(function() {
 
+    var isIE11 = !!window.MSStream;
+
     if (BrowserDetect.browser == 'Explorer') {
         jQuery('body').addClass('ie');
+    }
+    if (isIE11) {
+        jQuery('body').addClass('ie11');
     }
 
     detectViewPort(scrollbarWidth());
